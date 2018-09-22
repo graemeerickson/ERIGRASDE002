@@ -27,14 +27,18 @@ describe('Goodreads quotes response', function() {
 // todo: test quotes output file results
 describe('Quotes output file created', function() {
   it('should output to a text file', done => {
-    // delete file if it exists
-
-
-    // execute fetchQuotes function
     
+    // delete file if it exists
+    fs.truncate('./goodreads_quotes_output.txt', 0, () => {
+      console.log('done')
+    });
 
-    // verify that file exists
-
+    // execute fetchQuotes function, verify that file exists
+    request(app.fetchQuotes(quotes => {
+      // console.log('quotes in test:', quotes);
+      
+      expect(fs.existsSync('./goodreads_quotes_output.txt')).to.be.true;
+    }))
 
     // delete file
 
