@@ -1,9 +1,9 @@
 const expect = require('chai').expect;
+const fs = require('fs');
 const request = require('request');
 const app = require('../goodreads_quotes');
 
 const GOODREADS_QUOTES_URL = 'https://www.goodreads.com/author/quotes/1244.Mark_Twain';
-
 
 // todo: test user auth response
 
@@ -25,3 +25,20 @@ describe('Goodreads quotes response', function() {
 })
 
 // todo: test quotes output file results
+describe('Quotes output file created', function() {
+  it('should output to a text file', done => {
+    // delete file if it exists
+
+
+    // execute fetchQuotes function
+    
+
+    // verify that file exists
+
+
+    // delete file
+
+
+    done();
+  })
+})
