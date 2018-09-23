@@ -1,11 +1,17 @@
+const chai = require('chai')
+const chaiFiles = require('chai-files');
 const expect = require('chai').expect;
+const file = chaiFiles.file;
 const fs = require('fs');
 const request = require('request');
 const app = require('../goodreads_quotes');
 
+chai.use(chaiFiles);
+
 const GOODREADS_QUOTES_URL = 'https://www.goodreads.com/author/quotes/1244.Mark_Twain';
 
 // todo: test user auth response
+
 
 // test goodreads response at the Mark Twain quotes page url
 describe('Goodreads quotes response', function() {
@@ -26,22 +32,21 @@ describe('Goodreads quotes response', function() {
 
 // todo: test quotes output file results
 describe('Quotes output file created', function() {
-  it('should output to a text file', done => {
-    
+  it('should output quotes to a text file', done => {
     // delete file if it exists
     fs.truncate('./goodreads_quotes_output.txt', 0, () => {
-      console.log('done')
+      expect(file('./goodreads_quotes_output.txt')).to.not.exist;
     });
 
     // execute fetchQuotes function, verify that file exists
-    request(app.fetchQuotes(quotes => {
-      // console.log('quotes in test:', quotes);
-      
-      expect(fs.existsSync('./goodreads_quotes_output.txt')).to.be.true;
-    }))
+    app.fetchQuotes(quotes => {
+      expect(file('./goodreads_quotes_output.txt')).to.exist;
+    })
 
     // delete file
-
+    fs.truncate('./goodreads_quotes_output.txt', 0, () => {
+      expect(file('./goodreads_quotes_output.txt')).to.not.exist;
+    });
 
     done();
   })

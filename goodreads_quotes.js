@@ -31,6 +31,9 @@ const fetchQuotes = (done) => {
       }).get()
       
     // todo: write results to a file
+    fs.writeFile('./goodreads_quotes_output.txt', JSON.stringify(quotes, null, 2), function(err) {
+      if(err) { return console.log(err); }
+    });
 
     return done(quotes);
     })
