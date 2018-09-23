@@ -13,9 +13,8 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-// todo: write request code to fetch, parse, and write quotes from goodreads to a text file
+// write request code to fetch, parse, and write quotes from goodreads to a text file
 const fetchQuotes = (done) => {
-  console.log('hit fetchQuotes');
   fetch(url)
     .then(res => res.text())
     .then(body => {
@@ -30,12 +29,12 @@ const fetchQuotes = (done) => {
         }
       }).get()
       
-    // todo: write results to a file
-    fs.writeFile('./goodreads_quotes_output.txt', JSON.stringify(quotes, null, 2), function(err) {
-      if(err) { return console.log(err); }
-    });
+      // write results to a file
+      fs.writeFile('./goodreads_quotes_output.txt', JSON.stringify(quotes, null, 2), function(err) {
+        if(err) { return console.log(err); }
+      });
 
-    return done(quotes);
+      return done(quotes);
     })
     .catch(err => {
       console.log('error fetching from goodreads:', err);
