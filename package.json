@@ -17,12 +17,15 @@
   },
   "homepage": "https://github.com/graemeerickson/ERIGRASDE002#readme",
   "dependencies": {
-    "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "fs": "0.0.1-security",
-    "mocha": "^5.2.0",
     "node-fetch": "^2.2.0",
     "readline": "^1.3.0",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-files": "^1.4.0",
+    "mocha": "^5.2.0"
   }
 }
