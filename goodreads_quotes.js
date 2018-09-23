@@ -51,7 +51,7 @@ const checkForAuthorizedUser = (user, done) => {
 }
 
 // prompt user for goodreads credentials
-const getLoginInfo = (done) => {
+const getLoginInfo = () => {
   let username, password, user;
   rl.question('Enter username: ', usernameInput => {
     rl.question('Enter password: ', passwordInput => {
