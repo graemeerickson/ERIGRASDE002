@@ -2,9 +2,9 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const readline = require('readline');
-const url = 'https://www.goodreads.com/author/quotes/1244.Mark_Twain';
 
 const MAX_QUOTES = 10;
+const url = 'https://www.goodreads.com/author/quotes/1244.Mark_Twain';
 
 
 // set up input/output functionality
@@ -23,7 +23,7 @@ const fetchQuotes = (done) => {
         if (index < MAX_QUOTES) {
           return {
             quoteText: $(quote).find('.quoteText').text().match(/“(.*?)”/g)[0],
-            quoteTags: $(quote).find('.greyText').text().match(/\s\w+/g),
+            quoteTags: $(quote).find('.greyText').text().trim().match(/\s\w+/g),
             quoteLikes: $(quote).find('.right').text().trim()
           }
         }
@@ -63,9 +63,9 @@ const getLoginInfo = () => {
       checkForAuthorizedUser(user, (authenticated) => {
         if(authenticated){
           rl.close();
-          fetchQuotes(quotes => {
-            console.log('returnedQuotes:', quotes);
-          });
+            fetchQuotes(quotes => {
+              console.log('returnedQuotes:', quotes);
+            });
         } else {
           getLoginInfo();
         }
