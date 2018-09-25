@@ -57,17 +57,6 @@ describe('Quotes output file created', () => {
     })
     done();
   })
-
-  it('should remove the created text file', done => {
-    fs.unlinkSync(QUOTES_OUTPUT_FILE_PATH,function(err,results){
-      if(err) { 
-        console.log('Error: File should exist but doesn\'t.');
-      } else {
-        expect(file(QUOTES_OUTPUT_FILE_PATH)).to.not.exist;
-      };
-    });
-    done();
-  })
 })
 
 describe('Quotes output file validation', () => {
