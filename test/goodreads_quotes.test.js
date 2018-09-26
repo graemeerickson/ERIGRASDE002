@@ -54,8 +54,8 @@ describe('Quotes output file created', () => {
     // execute fetchQuotes function, verify that file exists
     app.fetchQuotes(quotes => {
       expect(file(QUOTES_OUTPUT_FILE_PATH)).to.exist;
+      done();
     })
-    done();
   })
 })
 
