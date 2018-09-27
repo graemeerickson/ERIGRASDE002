@@ -42,7 +42,7 @@ I organized the logic flow of the script as follows:
     * Quote text, by querying elements with class name *quoteText* and manipulating the resulting string using regex
     * Quote tags, by querying elements with class name *greyText* and manipulating the resulting string using regex and the trim method
     * Quote 'like' count, by querying elements with class name *right*
-8. Create a text file (or overwrite if one already exists) called *goodreads_quotes_output.txt*, and write the *quotes* data structure into it using the JSON.stringify method.
+8. Create a text file (or overwrite if one already exists) called *goodreads_quotes_output.txt*, and write the *quotes* data structure into it using the *JSON.stringify* method.
 9. Once the test file has been created, notify the end user via the command line that the quotes are ready to be reviewed.
 
 ### Data Structures
@@ -51,8 +51,8 @@ There are two primary data structures in this script:
   > Structured as an object due to its natural key/value pairs - username and password.
 2. Quotes array of objects
   > Storing the relevant quotes data into an array of objects made the most sense for a couple reasons:
-  * Why an array? Given challenge problem #3, I knew I would need to ultimately loop through this data structure on the frontend. Storing as an array would simplify that loop functionality.
-  * Why objects? Each quote contains a natural key/value pair: a description and a value (e.g., "quoteText": "If you tell the truth, you don't have to remember anything."). An array of arrays would have also been possible, but would have been less clear about what information each element represented since the values would need to be stored without related descriptions.
+  > Why an array? Given challenge problem #3, I knew I would need to ultimately loop through this data structure on the frontend. Storing as an array would simplify that loop functionality.
+  > Why objects? Each quote contains a natural key/value pair: a description and a value (e.g., "quoteText": "If you tell the truth, you don't have to remember anything."). An array of arrays would have also been possible, but would have been less clear about what information each element represented since the values would need to be stored without related descriptions.
 
 ## How to Test
 ### Manual Testing
