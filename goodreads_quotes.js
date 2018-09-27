@@ -6,8 +6,7 @@ const readline = require('readline');
 const MAX_QUOTES = 10;
 const url = 'https://www.goodreads.com/author/quotes/1244.Mark_Twain';
 
-
-// set up input/output functionality
+// set up command line interface input/output functionality
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -29,11 +28,12 @@ const fetchQuotes = (done) => {
         }
       }).get()
       
-      // write results to a file
+      // write results to text file
       fs.writeFile('./goodreads_quotes_output.txt', JSON.stringify(quotes, null, 2), function(err) {
         if(err) { return console.log(err); }
       });
 
+      // resolve promise
       return done(quotes);
     })
     .catch(err => {
@@ -42,10 +42,8 @@ const fetchQuotes = (done) => {
 }
 
 
-// todo: authenticate user with goodreads
+// authenticate user with goodreads
 const checkForAuthorizedUser = (user, done) => {
-  console.log('user data received:', user);
-  
   // hard-coded to true temporarily until auth code is written
   done(true);
 }
@@ -58,13 +56,14 @@ const getLoginInfo = () => {
       username = usernameInput;
       password = passwordInput;
       user = {username, password};
-      console.log('user:', user);
 
+      // authenticate the user with Goodreads. if authenticated, display
+      // quotes, else re-prompt for username & password.
       checkForAuthorizedUser(user, (authenticated) => {
         if(authenticated){
           rl.close();
             fetchQuotes(quotes => {
-              console.log('returnedQuotes:', quotes);
+              console.log("Quotes available to review in output file: goodreads_quotes_output.txt");
             });
         } else {
           getLoginInfo();
@@ -76,7 +75,7 @@ const getLoginInfo = () => {
 
 getLoginInfo();
 
-// todo: export app / functions for testing
+// export fetchQuotes function for test script to access
 module.exports = {
   fetchQuotes: fetchQuotes
 }
