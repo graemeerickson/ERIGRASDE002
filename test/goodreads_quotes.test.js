@@ -13,9 +13,6 @@ const QUOTES_OUTPUT_FILE_PATH = 'goodreads_quotes_output.txt';
 const EXPECTED_NUM_OF_QUOTES = 10;
 const EXPECTED_KEYS = ['quoteText', 'quoteTags', 'quoteLikes'];
 
-// todo: test user auth response
-
-
 // test goodreads response at the Mark Twain quotes page url
 describe('Goodreads quotes response', () => {
   it('should return a 200 response', done => {
