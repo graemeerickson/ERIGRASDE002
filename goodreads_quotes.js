@@ -43,7 +43,7 @@ const fetchQuotes = (done) => {
 
 // authenticate user with goodreads
 const checkForAuthorizedUser = (user, done) => {
-  // hard-coded to true in absence of auth functionalitys
+  // hard-coded to true in absence of auth functionality
   done(true);
 }
 
