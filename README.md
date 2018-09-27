@@ -84,14 +84,3 @@ That command will kick off the following automated tests:
     * The data structure contains the expected data points: quoteText, quoteTags, and quoteLikes.
 
 The Mocha framework will summarize the results of each test, which should all pass.
-
-
-
-
-
-
-
-
-
-
-
